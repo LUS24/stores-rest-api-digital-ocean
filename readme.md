@@ -348,7 +348,7 @@ vi /log/uwsgi.log
 
 If anything is running normally, we should be seeing something like this:
 
-<img src='assets/Flask Deployment/uwsgi_log.png'>
+![uwsgi.log](https://raw.githubusercontent.com/tecladocode/rest-apis-flask-python/master/guides/assets/Flask%20Deployment/uwsgi_log.png)
 
 But if there is any error in our code, it will also be reflected in the log.
 
