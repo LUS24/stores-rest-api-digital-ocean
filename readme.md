@@ -264,7 +264,7 @@ And the content we are going to input is shown below:
 Description=uWSGI items rest
 
 [Service]
-Environment=DATABASE_URL=postgres://johndoe:<johndoe_postgres_password>@localhost:5432/johndoe
+Environment=DATABASE_URL=postgresql://johndoe:<johndoe_postgres_password>@localhost:5432/johndoe
 ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid johndoe --gid johndoe --logto /var/www/html/items-rest/log/emperor.log
 Restart=always
 KillSignal=SIGQUIT
