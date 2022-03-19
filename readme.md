@@ -44,7 +44,7 @@ Note that this is a just an example to install different packages using one comm
 
 # Creating another user
 
-Since the `root` user is the most powerful, essentially a root user can do everything on the server, so we may want to limit access to it to improve security. So in this section, we will create a new user and configure it to "act like" a `root` user but with certain limitations, and we will login as this user from then on. It is highly recommended to do so, but if you choose not to follow this practice and simply want to login as the `root` user anyway, you may click [here to skip to the next section](How%20To%20Deploy%20Python%20App%20Using%20uWSGI%20And%20Nginx.md#configuring-postgres).
+Since the `root` user is the most powerful, essentially a root user can do everything on the server, so we may want to limit access to it to improve security. So in this section, we will create a new user and configure it to "act like" a `root` user but with certain limitations, and we will login as this user from then on. It is highly recommended to do so, but if you choose not to follow this practice and simply want to login as the `root` user anyway, you may click [here to skip to the next section](#configuring-postgres).
 
 ## Hello John Doe
 
@@ -62,30 +62,11 @@ passwd johndoe
 
 ## Providing user with additional privilege
 
-Since we will be logging in as `johndoe` for most of the time in the future, we will want it to have some "extra power", that is, temporarily acting as a super user. To do this, we need to run the command:
+Since we will be logging in as `johndoe` for most of the time in the future, we will want it to have some "extra power", that is, temporarily acting as a super user. To do this, we have to add the user to the sudoers group running the command:
 
 ```
-visudo
+usermod -aG sudo johndoe
 ```
-
-first, and we will see a text file popping up. Then we navigate to the lines containing:
-
-```
-# User privilege specification
-root ALL=(ALL:ALL) ALL
-```
-
-You can do this with the arrow keys. We need to add a new line for our user in this section:
-
-```
-# User privilege specification
-root ALL=(ALL:ALL) ALL
-johndoe ALL=(ALL:ALL) ALL
-```
-
-Remember that the `ALL` has to be **all uppercase**, otherwise it will raise syntax error.
-
-After adding this line, use `ctrl + o` to save and press `ENTER` to overwrite, then press `ctrl + x` to quit.
 
 ## Enable SSH for our new user
 
